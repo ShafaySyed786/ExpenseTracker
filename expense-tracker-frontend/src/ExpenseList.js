@@ -12,13 +12,13 @@ const ExpenseList = () => {
     return (
         <div>
             <h1>Expense List</h1>
-            <u1>
+            <ul>
                 {expenses.map(expense => (
                     <li key={expense.id}>
-                        {expense.description} - ${expense.amount} on {expense.data}
+                        {expense.description} - ${expense.amount} on {expense.date} (Category: {expense.category})
                     </li>
                 ))}
-            </u1>
+            </ul>
         </div>
     );
 };

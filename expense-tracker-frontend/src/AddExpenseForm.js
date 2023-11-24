@@ -4,21 +4,23 @@ const AddExpenseForm = ({ onAddExpense }) => {
     const [description, setDescription] = useState('');
     const [amount, setAmount] = useState('');
     const [date, setDate] = useState('');
+    const [category, setCategory] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!description || !amount || !date) {
+        if (!description || !amount || !date || !category) {
             alert('Please fill in all fields');
             return;
         }
 
-        onAddExpense({ description, amount, date});
+        onAddExpense({ description, amount, date, category });
 
         setDescription('');
         setAmount('');
         setDate('');
-    };
+        setCategory('');
+    };    
 
     return (
         <form onSubmit={handleSubmit}>
@@ -45,6 +47,14 @@ const AddExpenseForm = ({ onAddExpense }) => {
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                 />
+            </div>
+            <div>
+                <label>Category:</label>
+                    <input
+                        type="text"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                    />
             </div>
             <button type="submit">Add Expense</button>
         </form>
